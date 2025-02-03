@@ -217,5 +217,27 @@ I am capable of taking on challenging projects and providing high-quality soluti
     </footer>
 
     <script src="script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Configure the Intersection Observer
+        const observerOptions = {
+          threshold: 0.1 // Trigger when 10% of element is visible
+        };
+      
+        // Cards Observer
+        const cardObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('show');
+            }
+          });
+        }, observerOptions);
+      
+        // Apply to all service cards
+        document.querySelectorAll('.services .box').forEach(card => {
+          cardObserver.observe(card);
+        });
+      });
+      </script>
   </body>
 </html>
